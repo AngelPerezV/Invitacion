@@ -16,13 +16,15 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #fce4ec, #f8bbd0);
             color: #4a4a4a;
+            /* Cambiado de min-height a min-height con scroll permitido para celulares */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            overflow: hidden;
+            /* Permite el desplazamiento vertical (scroll) en celulares para que no se corten las imágenes */
+            overflow-y: auto;
             position: relative;
         }
 
@@ -36,6 +38,7 @@
             text-align: center;
             position: relative;
             z-index: 2;
+            margin: auto;
         }
 
         h1 {
@@ -137,6 +140,7 @@
 <body>
 
     <div class="card" id="card">
+        <!-- Texto actualizado a "te quiero" -->
         <h1>Oye... te quiero invitar a algo 🤭</h1>
         <p>Pronto será la boda de un amigo y la verdad estaría increíble ir acompañado. ¿Te gustaría ir conmigo? ✨</p>
         
