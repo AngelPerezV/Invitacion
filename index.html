@@ -91,13 +91,13 @@
             z-index: 2;
         }
 
-        /* Botón No con posición fija para volar por toda la pantalla al pasar el cursor o intentar tocarlo */
+        /* Botón No con límites estrictos para que nunca se salga de la pantalla */
         #btn-no {
             background-color: #e0e0e0;
             color: #666;
             position: fixed;
             z-index: 9999;
-            transition: all 0.2s ease-out;
+            transition: all 0.15s ease-out;
         }
 
         .hidden {
@@ -162,13 +162,14 @@
         <div class="harry-section" id="harry-section">
             <p style="font-size: 0.85rem; color: #880e4f; font-weight: 600;">Bonus: Aprobado por Harry Styles 😎✨</p>
             <div class="gallery">
-                <img src="https://i.ibb.co/3ykG4S2j/image-161bdb.jpg" alt="Harry 1">
-                <img src="https://i.ibb.co/68037k4/image-161ba3.jpg" alt="Harry 2">
+                <!-- Imágenes cargadas directamente desde tu repositorio de GitHub -->
+                <img src="image_161bdb.jpg" alt="Harry 1">
+                <img src="image_161ba3.jpg" alt="Harry 2">
             </div>
         </div>
     </div>
 
-    <!-- Botón No fuera de la tarjeta -->
+    <!-- Botón No -->
     <button class="btn" id="btn-no" onmouseover="moveButton()" ontouchstart="moveButton()" onclick="moveButton()">No 🙈</button>
 
     <script>
@@ -191,11 +192,18 @@
         function moveButton() {
             const btnNo = document.getElementById('btn-no');
             
-            const maxX = window.innerWidth - btnNo.offsetWidth - 30;
-            const maxY = window.innerHeight - btnNo.offsetHeight - 30;
+            // Calculamos el ancho y alto real del botón y de la pantalla
+            const btnWidth = btnNo.offsetWidth;
+            const btnHeight = btnNo.offsetHeight;
+            
+            const padding = 20; // Margen de seguridad para que no pegue exactamente al borde
+            
+            const maxX = window.innerWidth - btnWidth - padding;
+            const maxY = window.innerHeight - btnHeight - padding;
 
-            const randomX = Math.floor(Math.random() * (maxX - 40)) + 20;
-            const randomY = Math.floor(Math.random() * (maxY - 40)) + 20;
+            // Generamos posiciones aleatorias estrictamente dentro de los límites visibles
+            const randomX = Math.floor(Math.random() * (maxX - padding)) + padding;
+            const randomY = Math.floor(Math.random() * (maxY - padding)) + padding;
 
             btnNo.style.left = randomX + 'px';
             btnNo.style.top = randomY + 'px';
