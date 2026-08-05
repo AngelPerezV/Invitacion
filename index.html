@@ -91,7 +91,6 @@
             z-index: 2;
         }
 
-        /* Botón No con límites estrictos para que nunca se salga de la pantalla */
         #btn-no {
             background-color: #e0e0e0;
             color: #666;
@@ -138,7 +137,7 @@
 <body>
 
     <div class="card" id="card">
-        <h1>Oye, te quiero invitar a algo 🤭</h1>
+        <h1>Oye... te quería invitar a algo 🤭</h1>
         <p>Pronto será la boda de un amigo y la verdad estaría increíble ir acompañado. ¿Te gustaría ir conmigo? ✨</p>
         
         <div class="details-box">
@@ -154,22 +153,20 @@
 
         <div id="success" class="hidden">
             <div class="success-msg">
-                EXCEL-ENTE! entonces nos ponemos de acuerdo para que pase por ti ! lindo dia <br><br>
-                <span style="font-size: 0.8rem; font-weight: normal; color: #555;">PD me mandas captura de que dijiste que si , porque no me llega la noti a mi jajaj saludos cordiales!</span>
+                EXCEL-ENTE! Entonces nos ponemos de acuerdo para que pase por ti. ¡Lindo día! <br><br>
+                <span style="font-size: 0.8rem; font-weight: normal; color: #555;">PD: Me mandas captura de que dijiste que sí, porque no me llega la notificación a mí jajaja ¡Saludos cordiales!</span>
             </div>
         </div>
 
         <div class="harry-section" id="harry-section">
             <p style="font-size: 0.85rem; color: #880e4f; font-weight: 600;">Bonus: Aprobado por Harry Styles 😎✨</p>
             <div class="gallery">
-                <!-- Imágenes cargadas directamente desde tu repositorio de GitHub -->
                 <img src="image_161bdb.jpg" alt="Harry 1">
                 <img src="image_161ba3.jpg" alt="Harry 2">
             </div>
         </div>
     </div>
 
-    <!-- Botón No -->
     <button class="btn" id="btn-no" onmouseover="moveButton()" ontouchstart="moveButton()" onclick="moveButton()">No 🙈</button>
 
     <script>
@@ -192,16 +189,13 @@
         function moveButton() {
             const btnNo = document.getElementById('btn-no');
             
-            // Calculamos el ancho y alto real del botón y de la pantalla
             const btnWidth = btnNo.offsetWidth;
             const btnHeight = btnNo.offsetHeight;
-            
-            const padding = 20; // Margen de seguridad para que no pegue exactamente al borde
+            const padding = 20; 
             
             const maxX = window.innerWidth - btnWidth - padding;
             const maxY = window.innerHeight - btnHeight - padding;
 
-            // Generamos posiciones aleatorias estrictamente dentro de los límites visibles
             const randomX = Math.floor(Math.random() * (maxX - padding)) + padding;
             const randomY = Math.floor(Math.random() * (maxY - padding)) + padding;
 
