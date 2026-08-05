@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>¿Me acompañas? 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Elimina el retraso de clic en iOS */
+            touch-action: manipulation; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            color: #4a4a4a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #ad1457;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .details-box {
+            background: #fff0f5;
+            border: 1px dashed #f8bbd0;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #880e4f;
+        }
+
+        .details-box strong {
+            color: #c2185b;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            height: 60px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        #btn-si {
+            background-color: #c2185b;
+            color: white;
+            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.3);
+            z-index: 2;
+        }
+
+        #btn-no {
+            background-color: #e0e0e0;
+            color: #666;
+            position: absolute;
+            z-index: 3;
+            transition: left 0.15s ease, top 0.15s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-msg {
+            font-size: 1rem;
+            color: #ad1457;
+            font-weight: 600;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .harry-section {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .gallery img {
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="card">
+        <h1>Oye, te quiero invitar a algo 🤭</h1>
+        <p>Pronto será la boda de un amigo y la verdad estaría increíble ir acompañado. ¿Te gustaría ir conmigo? ✨</p>
+        
+        <div class="details-box">
+            📅 <strong>Fecha:</strong> 21 de Agosto de 2026<br>
+            ⛪ <strong>Ceremonia:</strong> Parroquia de San Felipe de Jesús, Iztacalco (18:00 hrs)<br>
+            🌿 <strong>Recepción:</strong> Jardín Hacienda Tezontle, Iztapalapa (20:00 hrs)<br>
+            👔 <strong>Dress Code:</strong> Formal
+        </div>
+
+        <div class="buttons" id="btn-container">
+            <button class="btn" id="btn-si" onclick="sayYes()">¡Sí, acepto! 🫣</button>
+            <!-- Usamos touchstart directo para que huya antes de que iOS procese el clic estático -->
+            <button class="btn" id="btn-no" ontouchstart="moveButton(event)" onclick="moveButton(event)">No 🙈</button>
+        </div>
+
+        <div id="success" class="hidden">
+            <div class="success-msg">
+                EXCEL-ENTE! entonces nos ponemos de acuerdo para que pase por ti ! lindo dia <br><br>
+                <span style="font-size: 0.8rem; font-weight: normal; color: #555;">PD me mandas captura de que dijiste que si , porque no me llega la noti a mi jajaj saludos cordiales!</span>
+            </div>
+        </div>
+
+        <div class="harry-section" id="harry-section">
+            <p style="font-size: 0.85rem; color: #880e4f; font-weight: 600;">Bonus: Aprobado por Harry Styles 😎✨</p>
+            <div class="gallery">
+                <img src="https://media.vogue.co.uk/photos/6055a607d1109965a14e5919/3:4/w_840,c_limit/harry-styles-vogue-cover-story-2.jpg" alt="Harry 1">
+                <img src="https://i.pinimg.com/736x/6b/f4/34/6bf434d8822e6d419d14953c466ea73c.jpg" alt="Harry 2">
+                <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-1288504102.jpg" alt="Harry 3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.getElementById('btn-container').style.display = 'none';
+            document.getElementById('success').classList.remove('hidden');
+            document.getElementById('harry-section').style.display = 'block';
+        }
+
+        function moveButton(e) {
+            if (e) e.preventDefault(); // Detiene el comportamiento táctil por defecto en iOS
+
+            const btnNo = document.getElementById('btn-no');
+            const card = document.getElementById('card');
+
+            const cardRect = card.getBoundingClientRect();
+            const btnRect = btnNo.getBoundingClientRect();
+
+            const maxX = cardRect.width - btnRect.width - 30;
+            const maxY = cardRect.height - btnRect.height - 30;
+
+            const randomX = Math.floor(Math.random() * (maxX - 10)) + 5;
+            const randomY = Math.floor(Math.random() * (maxY - 10)) + 5;
+
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
